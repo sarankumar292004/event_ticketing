@@ -1,0 +1,24 @@
+# Use an official Python runtime as a base image
+FROM python:3.9-slim
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Set working directory
+WORKDIR /event_ticketing 
+
+# Copy the entire project to the container
+COPY . /event_ticketing
+
+# Create a new virtual environment inside the container
+RUN python -m venv /event_ticketing/venv
+
+# Install dependencies using the new virtual environment's pip
+RUN /event_ticketing/venv/bin/pip install -r /event_ticketing/requirements.txt
+
+# Expose port 8000 for the Django app
+EXPOSE 8000
+
+# Run the Django server using the newly created virtual environment
+CMD ["/event_ticketing/venv/bin/python", "/event_ticketing/event_ticketing/manage.py", "runserver", "0.0.0.0:8000"]
