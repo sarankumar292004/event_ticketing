@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ event.name }}</title>
+</head>
+<body>
+    <h1>{{ event.name }}</h1>
+    <p>Date: {{ event.date }}</p>
+    <p>Location: {{ event.location }}</p>
+    <p>{{ event.description }}</p>
+
+    <a href="{% url 'book_ticket' event.pk %}">Book Tickets</a>
+    <a href="{% url 'event_list' %}">Back to Events</a>
+</body>
+</html>

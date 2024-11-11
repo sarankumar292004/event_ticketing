@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Tickets for {{ event.name }}</title>
+</head>
+<body>
+    <h1>Book Tickets for {{ event.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Book</button>
+    </form>
+    <a href="{% url 'event_detail' event.pk %}">Back to Event Details</a>
+</body>
+</html>
